@@ -8,3 +8,7 @@ def test_no_roots():
 def test_two_roots():
     result = solve(1, 0, -1)
     assert sorted(result) == sorted([1, -1])
+
+def test_one_root():
+    result = solve(1, 2, 1)
+    assert sorted(result) == sorted([-1,])
