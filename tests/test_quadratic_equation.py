@@ -1,3 +1,5 @@
+import pytest
+
 from src.quadratic_equation import solve
 
 
@@ -12,3 +14,7 @@ def test_two_roots():
 def test_one_root():
     result = solve(1, 2, 1)
     assert sorted(result) == sorted([-1,])
+
+def test_invalid_first_coefficient():
+    with pytest.raises(ZeroDivisionError) as e:
+        solve(0, 2, 1)

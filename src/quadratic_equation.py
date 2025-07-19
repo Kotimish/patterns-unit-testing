@@ -10,6 +10,10 @@ def solve(a: float, b: float, c: float) -> list[float]:
     :return: Список из найденных корней
     """
     result = []
+    epsilon = 1e-10
+    if abs(a) < epsilon:
+        assert ZeroDivisionError('Коэффициент \'a\' не может быть равен \'0\'')
+
     d = b**2 - (4*a*c)
     if d > 0:
         x1 = (-b + math.sqrt(d)) / (2 * a)
