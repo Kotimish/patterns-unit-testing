@@ -9,7 +9,10 @@ def solve(a: float, b: float, c: float) -> list[float]:
     :param c: свободный член уравнения
     :return: Список из найденных корней
     """
-    D = b**2 - (4*a*c)
-    if D <= 0:
-        return []
-    return []
+    result = []
+    d = b**2 - (4*a*c)
+    if d <= 0:
+        return result
+    x1 = (-b + math.sqrt(d))/(2 * a)
+    x2 = (-b - math.sqrt(d))/(2 * a)
+    return [x1, x2]
