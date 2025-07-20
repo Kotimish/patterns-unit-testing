@@ -1,5 +1,7 @@
 import math
 
+from settings import epsilon
+
 
 def solve(a: float, b: float, c: float) -> list[float]:
     """
@@ -10,16 +12,15 @@ def solve(a: float, b: float, c: float) -> list[float]:
     :return: Список из найденных корней
     """
     result = []
-    epsilon = 1e-10
     if abs(a) < epsilon:
         assert ZeroDivisionError('Коэффициент \'a\' не может быть равен \'0\'')
 
     d = b**2 - (4*a*c)
-    if d > 0:
+    if d > epsilon:
         x1 = (-b + math.sqrt(d)) / (2 * a)
         x2 = (-b - math.sqrt(d)) / (2 * a)
         return [x1, x2]
-    elif d == 0:
+    elif abs(d) < epsilon:
         x = (-b)/(2 * a)
         return [x,]
     return result
