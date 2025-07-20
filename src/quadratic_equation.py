@@ -12,8 +12,15 @@ def solve(a: float, b: float, c: float) -> list[float]:
     :return: Список из найденных корней
     """
     result = []
+
+    for coefficient in [a, b, c]:
+        if math.isinf(coefficient):
+            raise ValueError(f'Коэффициенты должны быть вещественными числами, а не бесконечностью')
+        elif math.isnan(coefficient):
+            raise ValueError(f'Значения коэффициентов должны быть числовыми, а не неопределенными (NaN)')
+
     if abs(a) < epsilon:
-        assert ZeroDivisionError('Коэффициент \'a\' не может быть равен \'0\'')
+        raise ZeroDivisionError('Коэффициент \'a\' не может быть равен \'0\'')
 
     d = b**2 - (4*a*c)
     if d > epsilon:

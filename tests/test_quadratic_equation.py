@@ -28,3 +28,15 @@ def test_one_root(a: float, b: float, c: float, expected: list[float]):
 def test_invalid_first_coefficient():
     with pytest.raises(ZeroDivisionError) as e:
         solve(0.0, 2.0, 1.0)
+
+@pytest.mark.parametrize(
+    "a, b, c",
+    [
+        (float('inf'), float('inf'), float('inf')),
+        (float('-inf'), float('-inf'), float('-inf')),
+        (float('nan'), float('nan'), float('nan')),
+    ]
+)
+def test_incorrect_float_value(a: float, b: float, c: float):
+    with pytest.raises(ValueError) as e:
+        solve(a, b, c)
